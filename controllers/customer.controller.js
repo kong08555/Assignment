@@ -26,6 +26,21 @@ exports.create = (req, res) => {
     })
 }
 
+exports.findById = (req, res) => {
+    customer.findById(req.params.customerId).then(data=> {
+        if(!data){
+            return res.status(404).json({
+                msg: "ไม่พบ Record รหัส" + req.params.customerId
+            })
+        }
+        res.json(data)
+    }).catch(err => {
+        return res.status(500).json({
+            msg: "เกิอดข้อผิดพลาด เนื่องจาก" + err.message
+        })
+    })
+}
+
 exports.update = (req, res) => {
     customer.findByIdAndUpdate(req.params.customerId,{$set: req.body}, {new: true})
     .then(data => {
@@ -53,7 +68,7 @@ exports.delete = (req, res) => {
         res.json({ msg: "delete data complete!"})
     }).catch(err => {
         return res.status(500).json({
-            msg: "ไม่สามารถลยข้อมูลได้ เนื่องจาก : " + err.message
+            msg: "ไม่สามารถลบข้อมูลได้ เนื่องจาก : " + err.message
         })
     })
 }
