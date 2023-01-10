@@ -1,4 +1,24 @@
 GET http://localhost:3000
 
 ###
-GET http://localhost:3000/api/customer
+GET http://localhost:3000/api/customer/63bd56b6a3ff3ad2f7335e91
+###
+POST http://localhost:3000/api/customer HTTP/1.1
+Content-Type: application/json
+
+{
+    "CustomerId": 1007,
+    "FullName": "antony dos santos",
+    "Adress": "Ajax"
+}
+###
+PUT http://localhost:3000/api/customer/63bd56b6a3ff3ad2f7335e91 HTTP/1.1
+Content-Type: application/json
+
+{
+    "CustomerId": 1010,
+    "FullName": "Dr.Marcus rashford",
+    "Adress": "Manchester united"
+}
+###
+DELETE http://localhost:3000/api/customer/63bd56b6a3ffad2f7335e92 HTTP/1.1
